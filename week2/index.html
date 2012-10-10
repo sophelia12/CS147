@@ -13,7 +13,9 @@
 	</head>
 
 	<body>
-			<!-- This is the top bit with the image. 
+	<style>
+	
+	</style>		<!-- This is the top bit with the image. 
 		I wonder why there's no image tag here? -->
 		<div class="whitebit"></div>
 
@@ -23,7 +25,11 @@
 			<div id="button">Refresh GPS: <div id="timer"></div></div>
 
 			<div class="area">
+<<<<<<< HEAD
 				<div class="box box1">Blah<div class="latitude"></div></div>
+=======
+				<div class="box box1"><div class="latitude">Blah</div></div>
+>>>>>>> 8865913693746c227d84e5de89407297f0367e59
 				<div class="box box2"><div class="longitude"></div></div>
 			</div>
 
@@ -31,6 +37,7 @@
 
 		<!-- Let's put in a timer here -->
 		<script type="text/javascript">
+<<<<<<< HEAD
 		
 		var count = 30;
 		<!-- run this script every second -->
@@ -46,6 +53,21 @@
     		}
 
     		document.getElementById("timer").innerHTML = count + " secs";
+=======
+		var count = 30;
+		var counter = setInterval(timer, 1000); 
+		
+		function timer() {
+		    count = count - 1;
+		    if (count <= 0) {
+		        clearInterval(counter);
+		        alert("Boom!");
+		        document.getElementById('button').style.visibility = 'hidden';
+		        return;
+		    }
+		
+		    document.getElementById("timer").innerHTML = count + " secs";
+>>>>>>> 8865913693746c227d84e5de89407297f0367e59
 		}
 
 		</script>
@@ -53,6 +75,7 @@
 		<!-- Let's put in the geolocation stuff here -->
 		<script type="text/javascript">
 		$(function () {
+<<<<<<< HEAD
     		$("#button").click(function () {
         		$(".box").hide();
         		$(".box").fadeIn();
@@ -62,6 +85,27 @@
    		 });
 });
 		
+=======
+    $("#button").click(function () {
+        getLocation();
+    });
+});
+
+function getLocation() {
+    if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    $(".box1").html(position.coords.latitude);
+    $(".box2").html(position.coords.longitude);
+} 
+
+getLocation();
+>>>>>>> 8865913693746c227d84e5de89407297f0367e59
 		</script>
 	</body>
 </html>
